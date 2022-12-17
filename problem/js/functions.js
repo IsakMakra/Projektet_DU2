@@ -129,12 +129,11 @@ function create_countries_cities_filters () {
   array_each(COUNTRIES, create_country);
 }
 
-
 // G
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
-function create_levels_filter () {
+/*function create_levels_filter () {
   function create_level (level) {
     const dom = create_filter_element({
       parent: document.querySelector("#level_filter > ul"),
@@ -168,8 +167,39 @@ function create_language_filter () {
     dom.dataset.id = data.id;
   }
   array_each(LANGUAGES, create_element);
-}
+}*/
 
+/*
+  SPECIFICATION:
+
+  create_filters
+    ARGUMENTS
+      type: level, subject, data
+        The type of filter you want to create
+      array: LEVELS, SUBJECTS, LANGUAGES
+        The array of objects that will be made into new dom-elements
+      No control of arguments
+
+    SIDE-EFFECTS
+      Creates new dom-elements that work as filters for every object inside the array mentioned in the function call
+      Places the elements on the website depending on what type of filter they are
+      Gives the new dom-elements the class: selected
+      Gives the new dom-elements text content which is dependent on what type of filter they are meant to be
+
+    NO RETURN-VALUE
+
+*/
+function create_filters (type, array) {
+  function create (type) {
+    const dom = create_filter_element({
+      parent: document.querySelector(`#${type}_filter > ul`),
+      class: "selected",
+      textContent: type.name,
+    });
+    dom.dataset.id = type.id;
+  }
+  array_each(array, create);
+}
 
 // G / VG (see details in specification)
 // CODE according to specifications
