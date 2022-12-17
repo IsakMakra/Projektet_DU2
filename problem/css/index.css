@@ -1,3 +1,10 @@
+/*
+  HARDCODED IMAGES ON THE PAGE HEADER
+*/
+#top_images > :nth-child(1) {background-image: url("../media/geo_images/sweden_normal_1.jpg");}
+#top_images > :nth-child(2) {background-image: url("../media/geo_images/sweden_normal_2.jpg");}
+#top_images > :nth-child(3) {background-image: url("../media/geo_images/sweden_normal_3.jpg");}
+
 @font-face {
   font-family: 'Roboto Condensed 300';
   src: url('../fonts/RobotoCondensed_light/RobotoCondensedLight.eot');
