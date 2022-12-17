@@ -133,7 +133,7 @@ function create_countries_cities_filters () {
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
-/*function create_levels_filter () {
+function create_levels_filter () {
   function create_level (level) {
     const dom = create_filter_element({
       parent: document.querySelector("#level_filter > ul"),
@@ -167,7 +167,7 @@ function create_language_filter () {
     dom.dataset.id = data.id;
   }
   array_each(LANGUAGES, create_element);
-}*/
+}
 
 /*
   SPECIFICATION:
@@ -198,7 +198,7 @@ function create_filters (type, array) {
     });
     dom.dataset.id = type.id;
   }
-  array_each(array, create);
+  array_each(array, create(type));
 }
 
 // G / VG (see details in specification)
