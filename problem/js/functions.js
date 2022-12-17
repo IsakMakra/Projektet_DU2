@@ -95,6 +95,56 @@ function toggle_cities (event) {
 // WRITE SPECIFICATION
 // ATTENTION: You need to write the specification of all three functions:
 //            create_countries_cities_filters, create_country and create_city
+
+/*
+  SPECIFICATIONS:
+
+  create_countries_cities_filters
+    ARGUMENTS
+      This function does not take any arguments
+
+    SIDE-EFFECTS
+      Calls the function: create_country, for every object in the array: COUNTRIES
+
+    RETURN-VALUE
+      No Return-Value
+
+  create_country
+    ARGUMENTS
+      country: an object from the array: COUNTRIES, that contain the following keys:
+        id: (a number value) the country´s id
+        name: (string) The country´s name
+      No control of arguments
+
+    SIDE-EFFECTS
+      Creates a new dom-element with the tag "div"
+      Gives the new dom-element the classes: "country", and: "filter_container"
+      Gives the new dom-element an id: "country_" + country.id (a number)
+      Appends the new dom-element to a "ul" element that has a direct child to an element which has an id: country_filter
+      Gives the new dom-element two child elements:
+      A "h1" element with the text content country.name (a string) and an "ul" element which is given the class: filter_list
+      Filters the objects in the array: CITIES, depending on if they have the same id as the country (the argument). Then it puts the filtered objects in a new array: cities
+      Calls the function: create_city, for every object in the array: cities
+
+    NO RETURN-VALUE
+
+  create_city
+    ARGUMENTS
+      city: an object from the array CITIES that contain the following keys:
+        id: (a number value) the city´s id
+        name: (string) The city´s name
+        countryID: (a number value) the id of the country where the city is located
+      No control of arguments
+
+    SIDE-EFFECTS
+      Creates a new dom-element with the tag "li", the class: "selected", and gives it the text content city.name (a string)
+      Appends the new dom-element to the "ul" element which is a direct child of the element with the id: "country_" + city.countryID (a string)
+      Gives the new dom-element a data-set attribute: city.id (a string)
+
+    NO RETURN-VALUE
+
+*/
+
 function create_countries_cities_filters () {
   function create_country (country) {
     const dom = document.createElement("div");
