@@ -307,6 +307,21 @@ function update_programmes () {
 // You must understand how this function works. There will be questions about it
 // in the code review (kodredovisning)
 
+/*
+  SPECIFICATION:
+ 
+  read_filters
+    ARGUMENTS
+      This function does not take any arguments
+
+    SIDE-EFFECTS
+      Filters the programmes accordingly depending on what filters are selected
+
+    RETURN VALUE
+      Returns an array: programmes, which contains the programmes that has properties that match with the filters and the search field
+
+*/  
+
 // Optional VG: Which parts of the function's code could be abstracted?
 //              Implement it
 function read_filters () {
