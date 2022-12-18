@@ -48,6 +48,12 @@ function create_filter_element (data) {
       Returns a reference to the new dom-element
   */
 
+    let dom = document.createElement("li");
+    dom.classList.add(data.class);
+    document.querySelector(data.parent).appendChild(dom);
+    dom.textContent = data.textContent;
+    dom.addEventListener("click", click_filter_element);
+    return dom;
 }
 
 
