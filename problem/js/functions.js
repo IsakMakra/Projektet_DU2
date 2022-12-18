@@ -50,7 +50,7 @@ function create_filter_element (data) {
 
     let dom = document.createElement("li");
     dom.classList.add(data.class);
-    document.querySelector(data.parent).appendChild(dom);
+    data.parent.appendChild(dom);
     dom.textContent = data.textContent;
     dom.addEventListener("click", click_filter_element);
     return dom;
