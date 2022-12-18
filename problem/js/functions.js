@@ -284,8 +284,16 @@ function create_programme (programme) {
 
   */  
 
-}
+    let dom = document.createElement("li");
+    dom.classList.add("programme");
+    let programInfo = document.createElement("p");
+    programInfo.textContent = programme.name;
+    dom.appendChild(programInfo);
 
+    let box = document.querySelector("#programmes > ul");
+    box.appendChild(dom);
+}
+array_each(PROGRAMMES, create_programme); //remove!!!
 
 // G
 // CODE according to the specification
