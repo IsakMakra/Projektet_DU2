@@ -347,7 +347,7 @@ function create_programme (programme) {
 
 // G
 // CODE according to the specification
-function update_programmes () {
+function update_programmes() {
 
   /*
       NO ARGUMENTS
@@ -363,6 +363,18 @@ function update_programmes () {
 
   */
 
+  let array = [];
+  array = read_filters();
+  console.log(array);
+
+  
+
+  if (array.length !== 0) {
+    document.querySelector("#programmes > p").style.display ="none";
+  }
+  else {
+    document.querySelector("#programmes > p").style.display ="inline";
+  }
 }
 
 
