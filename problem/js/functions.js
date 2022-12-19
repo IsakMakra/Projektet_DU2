@@ -363,11 +363,14 @@ function update_programmes() {
 
   */
 
+  let grid = document.querySelector("#programmes > ul");
+  grid.innerHTML = ``;
+
   let array = [];
   array = read_filters();
   console.log(array);
 
-  
+  array_each(array, create_programme);
 
   if (array.length !== 0) {
     document.querySelector("#programmes > p").style.display ="none";
