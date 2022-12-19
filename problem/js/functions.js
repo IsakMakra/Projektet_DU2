@@ -345,8 +345,6 @@ function create_programme (programme) {
   }
 }
 
-array_each(PROGRAMMES, create_programme); //REMOVE
-
 // G
 // CODE according to the specification
 function update_programmes () {
