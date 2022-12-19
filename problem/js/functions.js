@@ -284,16 +284,68 @@ function create_programme (programme) {
 
   */  
 
-    let dom = document.createElement("li");
-    dom.classList.add("programme");
-    let programInfo = document.createElement("p");
-    programInfo.textContent = programme.name;
-    dom.appendChild(programInfo);
+  let grid = document.querySelector("#programmes > ul");
 
-    let box = document.querySelector("#programmes > ul");
-    box.appendChild(dom);
+  let dom = document.createElement("li");
+  dom.classList.add("programme");
+  grid.appendChild(dom);
+
+  let div = document.createElement("div");
+  dom.appendChild(div);
+
+  let programName = document.createElement("h1");
+  programName.textContent = programme.name;
+  div.appendChild(programName);
+
+  let text = document.createElement("p");
+  div.appendChild(text);
+
+  let bottomText = document.createElement("p");
+  bottomText.classList.add("bottom_programme");
+  dom.appendChild(bottomText);
+
+  for (let i = 0; i<UNIVERSITIES.length; i++) {
+    if (programme.universityID === UNIVERSITIES[i].id) {
+      text.innerHTML += `<br>${UNIVERSITIES[i].name}`;
+      let university = UNIVERSITIES[i];
+
+      for (let i = 0; i<CITIES.length; i++) {
+        if (university.cityID === CITIES[i].id) {
+          text.innerHTML += `<br>${CITIES[i].name}`;
+          bottomText.innerHTML = `${CITIES[i].name}, sun-index: ${CITIES[i].sun} ()%`
+          let city = CITIES[i];
+
+          for (let i = 0; i<COUNTRIES.length; i++) {
+            if (city.countryID === COUNTRIES[i].id) {
+              text.innerHTML += `, ${COUNTRIES[i].name}`;
+              
+              for (let i = 0; i<LEVELS.length; i++) {
+                if (programme.levelID === LEVELS[i].id) {
+                  text.innerHTML += `<br>${LEVELS[i].name}`;
+
+                  for (let i = 0; i<SUBJECTS.length; i++) {
+                    if (programme.subjectID === SUBJECTS[i].id) {
+                      text.innerHTML += `, ${SUBJECTS[i].name}`;
+
+                      for (let i = 0; i<LANGUAGES.length; i++) {
+                        if (programme.languageID === LANGUAGES[i].id) {
+                          text.innerHTML += `, ${LANGUAGES[i].name}`;
+
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
-array_each(PROGRAMMES, create_programme); //remove!!!
+
+array_each(PROGRAMMES, create_programme); //REMOVE
 
 // G
 // CODE according to the specification
