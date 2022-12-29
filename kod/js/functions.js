@@ -363,7 +363,6 @@ function update_programmes() {
 
   let array = [];
   array = read_filters();
-  console.log(array);
 
   array_each(array, create_programme);
 
