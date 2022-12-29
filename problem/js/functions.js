@@ -310,8 +310,6 @@ function create_programme (programme) {
           bottomText.innerHTML = `${CITIES[i].name}, sun-index: ${CITIES[i].sun} ()%`
           let city = CITIES[i];
 
-          
-
           for (let i = 0; i<COUNTRIES.length; i++) {
             if (city.countryID === COUNTRIES[i].id) {
               text.innerHTML += `, ${COUNTRIES[i].name}`;
