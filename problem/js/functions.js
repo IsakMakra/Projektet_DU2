@@ -109,45 +109,39 @@ function toggle_cities (event) {
 
   create_countries_cities_filters
     ARGUMENTS
-      This function does not take any arguments
+      This function does not take any arguments.
 
     SIDE-EFFECTS
-      Calls the function: create_country, for every object in the array: COUNTRIES
+      Calls the function: create_country, for every object in the array: COUNTRIES.
 
-    RETURN-VALUE
-      No Return-Value
+    NO RETURN-VALUE
 
   create_country
     ARGUMENTS
       country: an object from the array: COUNTRIES, that contain the following keys:
-        id: (a number value) the country´s id
-        name: (string) The country´s name
-      No control of arguments
+        id: (a number value) the country´s id.
+        name: (string) The country´s name.
+      No control of arguments.
 
     SIDE-EFFECTS
-      Creates a new dom-element with the tag "div"
-      Gives the new dom-element the classes: "country", and: "filter_container"
-      Gives the new dom-element an id: "country_" + country.id (a number)
-      Appends the new dom-element to a "ul" element that has a direct child to an element which has an id: country_filter
-      Gives the new dom-element two child elements:
-      A "h1" element with the text content country.name (a string) and an "ul" element which is given the class: filter_list
-      Filters the objects in the array: CITIES, depending on if they have the same id as the country (the argument). Then it puts the filtered objects in a new array: cities
-      Calls the function: create_city, for every object in the array: cities
+      Creates a new dom_element for a country, appends it accordingly and gives it text-content and a classes for the CSS.
+      Then the function filters every city that has a "country" ID that matches with the country. 
+      After that it calls on the function create_city for each object in the array where the cities have been filtered.
 
     NO RETURN-VALUE
 
   create_city
     ARGUMENTS
       city: an object from the array CITIES that contain the following keys:
-        id: (a number value) the city´s id
-        name: (string) The city´s name
-        countryID: (a number value) the id of the country where the city is located
-      No control of arguments
+        id: (a number value) the city´s id.
+        name: (string) The city´s name.
+        countryID: (a number value) the id of the country where the city is located.
+      No control of arguments.
 
     SIDE-EFFECTS
-      Creates a new dom-element with the tag "li", the class: "selected", and gives it the text content city.name (a string)
-      Appends the new dom-element to the "ul" element which is a direct child of the element with the id: "country_" + city.countryID (a string)
-      Gives the new dom-element a data-set attribute: city.id (a string)
+      Creates a new dom-element for a city, appends it inside the recently added country dom-element and gives it a class so
+      that it will be selected by default. 
+      It also gets text-content and stores the city ID in the attribute dataset belonging to the dom-element.
 
     NO RETURN-VALUE
 
@@ -239,10 +233,11 @@ function create_language_filter () {
       No control of arguments
 
     SIDE-EFFECTS
-      Creates new dom-elements that work as filters for every object inside the array mentioned in the function call
-      Places the elements on the website depending on what type of filter they are
-      Gives the new dom-elements the class: selected
-      Gives the new dom-elements text content which is dependent on what type of filter they are meant to be
+      Creates new dom-elements for every object in an array.
+      Appends the dom-elements on the website depending on what type of filter they are
+      Gives the new dom-elements the a class for the CSS
+      Gives the new dom-elements text content which is dependent on what type of filter they are to be.
+      Stores the id:s of the filter-type inside the attribute dataset which belongs to the new dom-elements.
 
     NO RETURN-VALUE
 
@@ -314,6 +309,8 @@ function create_programme (programme) {
           text.innerHTML += `<br>${CITIES[i].name}`;
           bottomText.innerHTML = `${CITIES[i].name}, sun-index: ${CITIES[i].sun} ()%`
           let city = CITIES[i];
+
+          
 
           for (let i = 0; i<COUNTRIES.length; i++) {
             if (city.countryID === COUNTRIES[i].id) {
