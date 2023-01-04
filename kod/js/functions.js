@@ -243,6 +243,7 @@ function create_language_filter () {
     NO RETURN-VALUE
 
 */
+
 function create_filters (type, array) {
   function create (object) {
     const dom = create_filter_element({
@@ -254,7 +255,7 @@ function create_filters (type, array) {
     dom.dataset.id = object.id;
   }
 
-  array_each(array, create(type));
+  array_each(array, create);
 }
 
 // G / VG (see details in specification)
