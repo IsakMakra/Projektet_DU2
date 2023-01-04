@@ -308,7 +308,7 @@ function create_programme (programme) {
     </div>
 
     <div class="more_info"></div>
-    <div class="bottom_programme">${city}, sun-index: ${CITIES[city_id].sun}, ()%</div>
+    <div class="bottom_programme">${city}, sun-index: ${CITIES[city_id].sun} ()%</div>
   `
 }
 
