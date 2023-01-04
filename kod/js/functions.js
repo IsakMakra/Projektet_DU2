@@ -113,6 +113,7 @@ function toggle_cities (event) {
 
     SIDE-EFFECTS
       Calls the function: create_country, for every object in the array: COUNTRIES.
+      Creates filter for all countries and cities belonging to each country.
 
     NO RETURN-VALUE
 
@@ -235,7 +236,7 @@ function create_language_filter () {
     SIDE-EFFECTS
       Creates new dom-elements for every object in an array.
       Appends the dom-elements on the website depending on what type of filter they are
-      Gives the new dom-elements the a class for the CSS
+      Gives the new dom-elements a class for the CSS
       Gives the new dom-elements text content which is dependent on what type of filter they are to be.
       Stores the id:s of the filter-type inside the attribute dataset which belongs to the new dom-elements.
 
@@ -243,14 +244,16 @@ function create_language_filter () {
 
 */
 function create_filters (type, array) {
-  function create (type) {
+  function create (object) {
     const dom = create_filter_element({
       parent: document.querySelector(`#${type}_filter > ul`),
       class: "selected",
-      textContent: type.name,
+      textContent: object.name,
     });
-    dom.dataset.id = type.id;
+    
+    dom.dataset.id = object.id;
   }
+
   array_each(array, create(type));
 }
 
@@ -280,64 +283,33 @@ function create_programme (programme) {
   */  
 
   let grid = document.querySelector("#programmes > ul");
-
-  let dom = document.createElement("li");
+  let dom = document.createElement("div");
   dom.classList.add("programme");
   grid.appendChild(dom);
 
-  let div = document.createElement("div");
-  dom.appendChild(div);
+  let university = programme.universityID;
 
-  let programName = document.createElement("h1");
-  programName.textContent = programme.name;
-  div.appendChild(programName);
+  let city_id = UNIVERSITIES[university].cityID;
+  let city = CITIES[city_id].name;
 
-  let text = document.createElement("p");
-  div.appendChild(text);
+  let country_id = CITIES[city_id].countryID;
+  let country = COUNTRIES[country_id].name;
 
-  let bottomText = document.createElement("p");
-  bottomText.classList.add("bottom_programme");
-  dom.appendChild(bottomText);
+  let language = programme.languageID;
+  let level = programme.levelID - 1;
+  let subject = programme.subjectID;
 
-  for (let i = 0; i<UNIVERSITIES.length; i++) {
-    if (programme.universityID === UNIVERSITIES[i].id) {
-      text.innerHTML += `<br>${UNIVERSITIES[i].name}`;
-      let university = UNIVERSITIES[i];
+  dom.innerHTML = `
+    <div>
+      <div>${programme.name}</div>
+      <div>${UNIVERSITIES[university].name}</div>
+      <div>${city}, ${country}</div>
+      <div">${LEVELS[level].name}, ${SUBJECTS[subject].name}, ${LANGUAGES[language].name}</div>
+    </div>
 
-      for (let i = 0; i<CITIES.length; i++) {
-        if (university.cityID === CITIES[i].id) {
-          text.innerHTML += `<br>${CITIES[i].name}`;
-          bottomText.innerHTML = `${CITIES[i].name}, sun-index: ${CITIES[i].sun} ()%`
-          let city = CITIES[i];
-
-          for (let i = 0; i<COUNTRIES.length; i++) {
-            if (city.countryID === COUNTRIES[i].id) {
-              text.innerHTML += `, ${COUNTRIES[i].name}`;
-              
-              for (let i = 0; i<LEVELS.length; i++) {
-                if (programme.levelID === LEVELS[i].id) {
-                  text.innerHTML += `<br>${LEVELS[i].name}`;
-
-                  for (let i = 0; i<SUBJECTS.length; i++) {
-                    if (programme.subjectID === SUBJECTS[i].id) {
-                      text.innerHTML += `, ${SUBJECTS[i].name}`;
-
-                      for (let i = 0; i<LANGUAGES.length; i++) {
-                        if (programme.languageID === LANGUAGES[i].id) {
-                          text.innerHTML += `, ${LANGUAGES[i].name}`;
-
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+    <div class="more_info"></div>
+    <div class="bottom_programme">${city}, sun-index: ${CITIES[city_id].sun}</div>
+  `
 }
 
 // G
